@@ -1,0 +1,17 @@
+libgenome-perl (0v453-1) lucid; urgency=low
+
+  * Package 453 separately.
+
+ -- Matthew Callaway <mcallawa@genome.wustl.edu>  Tue, 14 Dec 2010 16:57:02 -0600
+
+libgenome-perl (0v451-1) lucid; urgency=low
+
+  * Package 451 separately.
+
+ -- Matthew Callaway <mcallawa@genome.wustl.edu>  Mon, 13 Dec 2010 23:59:31 -0600
+
+libgenome-perl (0v421-1) lucid; urgency=low
+
+  * Package build 421
+
+ -- Matthew Callaway <mcallawa@genome.wustl.edu>  Tue, 23 Nov 2010 13:30:01 -0600
