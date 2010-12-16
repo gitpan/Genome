@@ -3,7 +3,7 @@ use Module::Build;
 Module::Build->new(
   module_name => 'Genome',
   license => 'lgpl',
-  dist_version => 0.01,
+  dist_version => '0.02',
   requires => {
     'perl' => '',
     'Carp' => '',
@@ -13,9 +13,9 @@ Module::Build->new(
     'IO::File' => '',
     'IO::String' => '',
     'Sys::Hostname' => '',
-    'UR' => '',
+    'UR' => 'v0.17',
     'Test::MockObject' => '',
     'Getopt::Complete' => '',
   },
-  script_files => [ 'bin/genome', 'bin/genome5.12.1', 'bin/gmt' ]
+  script_files => [ 'bin/genome', 'bin/gmt' ]
 )->create_build_script;

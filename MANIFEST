@@ -1,5 +1,4 @@
 bin/genome
-bin/genome5.12.1
 bin/gmt
 Build.PL
 debian/changelog
@@ -21,6 +20,6 @@ lib/Genome/Model/Tools.pm.opts
 lib/Genome/Vocabulary.pm
 LICENSE
 MANIFEST
-META.yml
 README
 t/Genome.t
+META.yml

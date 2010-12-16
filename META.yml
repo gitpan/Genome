@@ -10,11 +10,9 @@ meta-spec:
   version: 1.4
 name: Genome
 provides:
-  Carp:
-    file: lib/Genome.pm
   Genome:
     file: lib/Genome.pm
-    version: 0.01
+    version: 0.02
   Genome::Config:
     file: lib/Genome/Config.pm
     version: 0
@@ -51,8 +49,8 @@ requires:
   IO::String: ''
   Sys::Hostname: ''
   Test::MockObject: ''
-  UR: ''
+  UR: v0.17
   perl: ''
 resources:
-  license: http://opensource.org/licenses/lgpl-license.php
-version: 0.01
+  license: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+version: 0.02
