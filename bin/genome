@@ -4,65 +4,142 @@ use strict;
 use warnings;
 
 BEGIN {
-    # This allows the genome command to self-serve as a tab completer for the bash shell.
-    # When "genome" is run by bash as a tab completer, the code below will service the
+    # This allows the gmt command to self-serve as a tab completer for the bash shell.
+    # When "gmt" is run by bash as a tab completer, the code below will service the
     # tab-completion request and then exit before doing any real work.
     # The code is in an eval to prevent problems on systems which do not have Getopt::Complete
     # installed.  The code is in a BEGIN block to ensure it still runs before anything else.
     if ($ENV{COMP_LINE}) {
-        eval "use Getopt::Complete::Cache (class => 'Genome::Command', above => 1)";
+        eval "use Getopt::Complete::Cache class => 'Genome::Model::Tools', above => 1;";
         exit if ($@);
     }
 };
 
-use above "Genome";
-use Genome::Command;
-Genome::Command->execute_with_shell_params_and_exit();
+use above 'Genome';
+use Genome::Model::Tools;
+Genome::Model::Tools->execute_with_shell_params_and_exit();
 
 =pod
 
 =head1 NAME
 
-genome SUBCOMMAND ...
+genome - bioinformatics tools for genomics
 
 =head1 SYNOPSIS
 
-genome (list all available commands)
+  # get a top-level list
+  genome
 
-genome project              ...
-genome taxon                ...
-genome population-group     ...
-genome individual           ...
-genome sample               ...
-genome instrument-data      ...
-genome processing-profile   ...
-genome model                ...
-genome tools                ...
-genome disk                 ...
+  # see the MuSiC tools
+  genome music
+
+  # run the MuSiC smg-test tool (for example)
+  genome music smg-test
+
 
 =head1 DESCRIPTION
 
-This is the top-level tool for working with the genome modeling system and tools.
+The B<genome> command gives command-line access to any of the genome modeling tools
+which are installed on the current system.
 
-Just run it with no parameters to get a list of available commands.
+Each installed tool group is a sub-command.
 
-Every command and sub-command supports the --help option.
+Just type B<genome> and press <ENTER> for a the top-level list and drill down.
 
-=head1 OPTIONS
+=head1 DEVELOPMENT
 
-These depend on the specific sub-command.
+Installing any new Perl module with a name starting with Genome::Model::Tools will add to the tree.
 
-=head1 DEVELOPER NOTE
+=head1 AUTHORS
 
-Running this WITHIN a source tree under the Genome namespace will automatically "use lib" your tree.
+ This software is developed by the analysis and engineering teams at 
+ The Genome Center at Washington Univiersity in St. Louis, with funding from 
+ the National Human Genome Research Institute.
+
+ Scott Abbott
+ Travis Abbott
+ Edward Belter
+ Paul Bender
+ Anthony Brummett
+ Todd C. Carter
+ Matthew Callaway
+ C.J. Carey
+ Lynn Carmichael
+ Ken Chen
+ Eric Clark
+ Kevin Crouse
+ Indraniel Das
+ Nathan Dees
+ Eric deMello
+ Brian Derickson
+ Alice Diec
+ David Dooling
+ Feiyu Du
+ Adam Dukes
+ James Eldred
+ Xian Fan
+ Ian Ferguson
+ Chris Harris
+ Amy Hawkins
+ Todd Hepler
+ Xin Hong
+ Shunfang Hou
+ Jasreet Hundal
+ Erik Hvatum
+ Mark Johnson
+ Krisha-Latha Kanchi
+ Cyriac Kandoth
+ Phil Kimmey
+ Michael Kiwala
+ Daniel Koboldt
+ Karthik Kota
+ Kim Kyung
+ David Larson
+ Sai Lek
+ Shawn Leonard
+ Shin Leong
+ Ling Lin
+ Justin Lolofie
+ Robert Long
+ Charles Lu
+ John Martin
+ Josh McMichael
+ Rick Meyer
+ Thomas Mooney
+ William Nash
+ Nathan Nutter
+ Ben Oberkfell
+ John Osborne
+ Josh Peck
+ Jerome Peirick
+ Craig Pohl
+ Ryan Richt
+ Noorus Sahar Abubucker
+ Gabriel Sanderson
+ William Schierding
+ Jon Schindler
+ William Schroeder
+ Christopher Schuster
+ Xiaoqi Shi
+ Scott Smith
+ Sasi Suruliraj
+ Kenneth Swanson
+ Jason Walker
+ John Wallis
+ Jim Weible
+ Mike Wendl
+ Todd Wylie
+
+=head1 LICENSE
+
+This software is copyright Washington University in St. Louis, 2007-2010.  
+
+It is released under the Lesser GNU Public License (LGPL) version 3.  See the 
+associated LICENSE file in this distribution.
 
 =head1 BUGS
 
-Report bugs to software at genome.wustl.edu
-
-=head1 AUTHOR
-
-Eddie Belter
+For defects with any software in the genome namespace,
+contact genome-dev ~at~ genome.wustl.edu.
 
 =cut
-

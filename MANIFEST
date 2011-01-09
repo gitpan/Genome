@@ -17,6 +17,8 @@ lib/Genome/Env/GENOME_NO_REQUIRE_USER_VERIFY.pm
 lib/Genome/Env/GENOME_VIEW_CACHE.pm
 lib/Genome/Model/Tools.pm
 lib/Genome/Model/Tools.pm.opts
+lib/Genome/Model/Tools/Example1.pm
+lib/Genome/Model/Tools/Example2.pm
 lib/Genome/Vocabulary.pm
 LICENSE
 MANIFEST

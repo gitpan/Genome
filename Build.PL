@@ -3,9 +3,8 @@ use Module::Build;
 Module::Build->new(
   module_name => 'Genome',
   license => 'lgpl',
-  dist_version => '0.02',
   requires => {
-    'perl' => '',
+    'perl' => 'v5.8.7',
     'Carp' => '',
     'DateTime' => '',
     'File::Basename' => '',
@@ -13,9 +12,12 @@ Module::Build->new(
     'IO::File' => '',
     'IO::String' => '',
     'Sys::Hostname' => '',
-    'UR' => 'v0.17',
+    'UR' => 'v0.20',
     'Test::MockObject' => '',
     'Getopt::Complete' => '',
   },
+  cpan_client => 'cpanm',
+  #test_files => [qw|t/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t|],
+  #tap_harness_args => { jobs => 8 },
   script_files => [ 'bin/genome', 'bin/gmt' ]
 )->create_build_script;
