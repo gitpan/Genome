@@ -12,7 +12,7 @@ name: Genome
 provides:
   Genome:
     file: lib/Genome.pm
-    version: 0.03
+    version: 0.04
   Genome::Config:
     file: lib/Genome/Config.pm
     version: 0
@@ -41,20 +41,20 @@ provides:
     file: lib/Genome/Model/Tools/Example1.pm
   Genome::Model::Tools::Example2:
     file: lib/Genome/Model/Tools/Example2.pm
+  Genome::Model::Tools::Install:
+    file: lib/Genome/Model/Tools/Install.pm
   Genome::Vocabulary:
     file: lib/Genome/Vocabulary.pm
 requires:
   Carp: ''
-  DateTime: ''
   File::Basename: ''
   File::Temp: ''
   Getopt::Complete: ''
   IO::File: ''
   IO::String: ''
   Sys::Hostname: ''
-  Test::MockObject: ''
-  UR: v0.20
+  UR: 0.26
   perl: v5.8.7
 resources:
   license: http://opensource.org/licenses/lgpl-license.php
-version: 0.03
+version: 0.04

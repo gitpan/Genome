@@ -3,7 +3,7 @@ package Genome;
 use warnings;
 use strict;
 
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 # software infrastructure
 use UR;
@@ -22,7 +22,6 @@ eval {
 };
 
 # modules we need to auto-load
-use Test::MockObject;
 use File::Temp;
 use IO::String;
 
@@ -139,7 +138,7 @@ those tools.
 
  This software is developed by the analysis and engineering teams at 
  The Genome Center at Washington Univiersity in St. Louis, with funding from 
- the National Human Genome Research Institute.
+ the National Human Genome Research Institute.  Richard K. Wilson, P.I.
 
  Scott Abbott
  Travis Abbott
@@ -217,7 +216,7 @@ those tools.
 
 =head1 LICENSE
 
-This software is copyright Washington University in St. Louis, 2007-2010.  
+Copyright (C) 2007-2010 Washington University in St. Louis.
 
 It is released under the Lesser GNU Public License (LGPL) version 3.  See the 
 associated LICENSE file in this distribution.
