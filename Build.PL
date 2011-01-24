@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 use Module::Build;
+
 Module::Build->new(
   module_name => 'Genome',
   license => 'lgpl',
@@ -17,5 +18,6 @@ Module::Build->new(
   cpan_client => 'cpanm',
   #test_files => [qw|t/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t|],
   #tap_harness_args => { jobs => 8 },
+  bindoc_dirs => ['pod'],
   script_files => [ 'bin/genome', 'bin/gmt' ]
 )->create_build_script;

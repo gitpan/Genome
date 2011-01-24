@@ -1,0 +1,34 @@
+
+
+=pod
+
+=head1 NAME
+
+genome install - install more modules
+
+=head1 SYNOPSIS
+
+genome install [NAME]
+
+
+
+=head1 OPTIONAL ARGUMENTS
+
+=over
+
+
+=item NAME  I<Text>
+
+tool name
+
+
+=back
+
+=head1 DESCRIPTION:
+
+  !!! define help_detail() in module 
+
+
+
+=cut
+

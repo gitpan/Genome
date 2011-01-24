@@ -54,7 +54,7 @@ Installing any new Perl module with a name starting with Genome::Model::Tools wi
 
  This software is developed by the analysis and engineering teams at 
  The Genome Center at Washington Univiersity in St. Louis, with funding from 
- the National Human Genome Research Institute.
+ the National Human Genome Research Institute.  Richard K. Wilson, P.I.
 
  Scott Abbott
  Travis Abbott
@@ -130,9 +130,10 @@ Installing any new Perl module with a name starting with Genome::Model::Tools wi
  Mike Wendl
  Todd Wylie
 
+
 =head1 LICENSE
 
-This software is copyright Washington University in St. Louis, 2007-2010.  
+Copyright (C) 2007-2011 Washington University in St. Louis.
 
 It is released under the Lesser GNU Public License (LGPL) version 3.  See the 
 associated LICENSE file in this distribution.
@@ -143,3 +144,4 @@ For defects with any software in the genome namespace,
 contact genome-dev ~at~ genome.wustl.edu.
 
 =cut
+
