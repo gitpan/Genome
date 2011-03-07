@@ -12,10 +12,7 @@ name: Genome
 provides:
   Genome:
     file: lib/Genome.pm
-    version: 0.05
-  Genome::Config:
-    file: lib/Genome/Config.pm
-    version: 0
+    version: 0.06
   Genome::Env::GENOME_DEV_MODE:
     file: lib/Genome/Env/GENOME_DEV_MODE.pm
     version: 0
@@ -43,6 +40,10 @@ provides:
     file: lib/Genome/Model/Tools/Example2.pm
   Genome::Model::Tools::Install:
     file: lib/Genome/Model/Tools/Install.pm
+  Genome::Model::Tools::Install::AptGet:
+    file: lib/Genome/Model/Tools/Install/AptGet.pm
+  Genome::Model::Tools::Install::Cpanm:
+    file: lib/Genome/Model/Tools/Install/Cpanm.pm
   Genome::Site:
     file: lib/Genome/Site.pm
     version: 0
@@ -58,8 +59,8 @@ requires:
   IO::File: ''
   IO::String: ''
   Sys::Hostname: ''
-  UR: 0.26
+  UR: 0.29
   perl: v5.8.7
 resources:
   license: http://opensource.org/licenses/lgpl-license.php
-version: 0.05
+version: 0.06

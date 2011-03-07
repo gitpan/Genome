@@ -10,6 +10,11 @@ genome install - install more modules
 
 genome install [NAME]
 
+ genome install music
+ genome music ...
+
+ genome install annotate
+ genome annotate ...
 
 
 =head1 OPTIONAL ARGUMENTS
@@ -26,7 +31,9 @@ tool name
 
 =head1 DESCRIPTION:
 
-  !!! define help_detail() in module 
+  Install new geomics software.
+  
+  When run with no parameters, the available tools will be listed by name.
 
 
 

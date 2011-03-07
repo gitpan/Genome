@@ -2,6 +2,7 @@ package Genome::Model::Tools::Install;
 use strict;
 use warnings;
 use Genome;
+use IPC::Cmd qw/can_run/;
 
 class Genome::Model::Tools::Install {
     is => 'Command',
@@ -12,69 +13,63 @@ class Genome::Model::Tools::Install {
     doc => 'install more modules'
 };
 
+sub is_sub_command_delegator { 0 };
+
+sub help_synopsis {
+    return <<EOS;
+ genome install music
+ genome music ...
+
+ genome install annotate
+ genome annotate ...
+EOS
+}
+
+sub help_detail {
+    return <<EOS
+Install new geomics software.
+
+When run with no parameters, the available tools will be listed by name.
+EOS
+}
+
+# our @STRATEGIES = ('apt-get', 'yum', 'homebrew', 'port', 'cpanm', 'curl');
+our @STRATEGIES = ('apt-get', 'cpanm', 'curl');
+
 sub execute {
     my $self = shift;
-    
-    my $name = $self->name;
-    unless ($name) {
-        $self->error_message("Please specify the name of a tool to install.");
-        $self->status_message("Checking CPAN for genome modeling tools...");
-        my $cmd = "curl --progress-bar -L 'http://search.cpan.org/search?query=Genome::Model::Tools&mode=all' | grep class=sr";
-        my @rows = `$cmd`;
-        chomp @rows;
-        my @modules;
-        for my $row (@rows) {
-            if ( my ($module) = ($row =~ m{lib/(Genome/Model/Tools/.*\.pm)}) ) {
-                push @modules, $module;
+
+    # TODO:
+    my $strategy;
+    my $delegate;
+    for my $executable (@STRATEGIES) {
+        if (can_run($executable)) {
+            $strategy = $executable;
+            my @words = map { ucfirst(lc($_)) } split(/-/,$strategy);
+            $delegate = __PACKAGE__ . '::' . join('',@words);
+            eval "use $delegate";
+            if ($@) {
+                $self->warning_message("$executable is installed on your system, but no $delegate module was found!");
+                $strategy = undef;
+                $delegate = undef;
+                next;
+            }
+            else {
+                $self->status_message("install via $strategy...");
+                last;
             }
         }
-        if (@modules) {
-            $self->status_message(join("\n",@modules));
-        }
         else {
-            $self->status_message("*** no uninstalled modules available ***");
-        }
-        return;
-    }   
-    
-    my @words = map { ucfirst(lc($_)) } split("-", $name);
-    my $module = 'Genome::Model::Tools::' . join('',@words);
-
-    my $path = `which cpanm`;
-    chomp $path;
-    unless ($path) {
-        unless (`which curl`) {
-            $self->error_message("Your system does not have cpanm or curl installed.  Please install one of these to use the genome installer!");
-            return;
-        }
-        $self->status_message("Installing cpanm...");
-        my $cmd = "curl --progress-bar -L http://cpanmin.us | perl - --sudo App::cpanminus";
-        system $cmd;
-        $path = `which cpanm`;
-        unless ($path) {
-            $self->status_message("Failed to install cpanm!  Attempting direct stream from the Internet...");
-           $path = "curl --progress-bar -L http://cpanmin.us | perl - --sudo ";
+            # print "no $executable installed\n";
         }
     }
 
-    $self->status_message("searching for $module...");
-   
-    my $cmd = "$path --info $module";
-    my $info = `$cmd`;
-    unless ($info) {
-        $self->status_message("Failed to find module $module!");
-        return;
-    }
-    
-    my $rv = system "$path --progress-bar $module";
-    $rv /= 256;
-
-    if ($rv) {
-        $self->error_message("Errors installing $module!");
+    unless ($strategy) {
+        $self->error_message("No installation tools available!  Failed to find any of these: @STRATEGIES.  Your system is in need of help. :(");
         return;
     }
 
-    return 1;
+    return $delegate->execute(name => $self->name);
 }
 
 sub sub_command_sort_position { 9999 }

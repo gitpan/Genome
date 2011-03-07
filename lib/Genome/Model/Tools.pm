@@ -7,7 +7,7 @@ use Genome;
 our $VERSION = $Genome::VERSION;
 
 class Genome::Model::Tools {
-    is => 'Command',
+    is => 'Command::Tree',
     doc => 'bioinformatics tools for genomics'
 };
 
@@ -20,18 +20,27 @@ sub help_sub_commands {
     return $txt;
 }
 
+sub doc_copyright_license {
+   return <<EOS
+Copyright (C) 2007-2011 Washington University in St. Louis.
+
+It is released under the Lesser GNU Public License (LGPL) version 3.  See the 
+associated LICENSE file in this distribution.
+EOS
+}
+
 1;
 
 =pod
 
 =head1 NAME
 
-Genome::Model::Tools - the base namespace for B<gmt> tool modules
+Genome::Model::Tools - base namespace for command modules 
 
 =head1 DESCRIPTION
 
 Modules with names starting with Genome::Model::Tools are directly invokable by
-the "gmt" command, installed with the core Genome package.
+the "genome" command, installed with the core Genome package.
 
 These modules all inherit from Command and use UR for their class definitions.
 
@@ -71,7 +80,7 @@ contact genome-dev@genome.wustl.edu.
 
 =head1 SEE ALSO
 
-B<gmt>, B<Genome>
+B<genome>, B<Genome>
 
 =cut
 
